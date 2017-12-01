@@ -1,0 +1,16 @@
+{
+  "name": "postinstall-prepare",
+  "version": "1.0.0",
+  "repository": "https://github.com/ds300/patch-package",
+  "author": "David Sheldrick",
+  "main": "",
+  "scripts": {
+    "postinstall": "node ./run.js"
+  },
+  "files": [
+    "run.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT"
+}
