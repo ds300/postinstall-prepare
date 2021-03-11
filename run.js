@@ -11,8 +11,16 @@ if (fs.existsSync(packageJsonPath)) {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath))
 
   if (packageJson.scripts && packageJson.scripts.prepare) {
-    exec('npm run prepare', {cwd: appPath})
+    const pkgManager = shouldUseYarn() ? 'yarn' : 'npm';
+    exec(`${pkgManager} run prepare`, {cwd: appPath})
   }
 }
 
-
+function shouldUseYarn() {
+  try {
+    exec('yarnpkg --version', { stdio: 'ignore' });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
